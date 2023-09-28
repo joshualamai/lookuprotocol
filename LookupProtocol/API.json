@@ -1,0 +1,18 @@
+# curl "http://worldtimeapi.org/api/timezone/Europe/Dublin"
+{
+  "abbreviation": "GMT",
+  "client_ip": "193.1.209.141",
+  "datetime": "2022-12-09T11:43:42.450926+00:00",
+  "day_of_week": 5,
+  "day_of_year": 343,
+  "dst": false,
+  "dst_from": null,
+  "dst_offset": 0,
+  "dst_until": null,
+  "raw_offset": 0,
+  "timezone": "Europe/Dublin",
+  "unixtime": 1670586222,
+  "utc_datetime": "2022-12-09T11:43:42.450926+00:00",
+  "utc_offset": "+00:00",
+  "week_number": 49
+}

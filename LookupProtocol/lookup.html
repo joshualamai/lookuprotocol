@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+<p> Boohoo</p>
+<input type="text" id="mySearch" onkeyup="myFunction()" placeholder="Search.." title="Type in a category"/>
+<button type="button" onclick="loadXMLDoc()">Change Content</button>
+<link rel="stylesheet" href= "css.css">
+<ul id="myMenu">
+ <li><a href="home.html">HomePage</a></li>
+<li><a href="#">Contacts</a></li>
+<li><a href="images.html">Images</a></li>
+<p> 
+Id Numbers
+<li>
+</p>
+000-01
+</li>
+000-02
+<li>
+000-03
+</li>
+000-04
+<li>
+000-05
+</li>
+000-06
+<li>
+000-07
+</li>
+000-08
+<li>
+000-09
+</li>
+
+ 
+</ul>
+<script>
+function myFunction() {
+	// Declare variables
+	var input, filter, ul, li, a, i;
+  input = document.getElementById("mySearch");
+  filter = input.value.toUpperCase();
+  ul = document.getElementById("myMenu");
+  li = ul.getElementsByTagName("li");
+
+		// Loop through all list items, and hide those who don't match the search query
+		for (i = 0; i < li.length; i++) {
+    a = li[i].getElementsByTagName("a")[0];
+			if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+      li[i].style.display = "";
+				} else {
+      li[i].style.display = "none";
+    }
+  }
+}
+
+</script>
+<script>
+ var y;
+           var i;
+           var temp = 0;
+           var x;
+
+           
+           const id_arr = new Array(100);
+           const id_arr1 = new Array(100);
+           const final_array = new Array(100);
+           
+
+           
+            function loadXMLDoc() {
+
+            var xmlhttp = new XMLHttpRequest();
+            
+            xmlhttp.onreadystatechange = function () {
+  
+                // Request finished and response 
+                // is ready and Status is "OK"
+                if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+                    searchBox(this);
+                    
+                }
+            };
+            
+  
+            
+            xmlhttp.open("GET", "thing.xml", true);
+            xmlhttp.send();
+           
+
+           
+        }
+        
+
+            function searchBox(xml) {
+            
+            var i;
+            var xmlDoc = xml.responseXML;
+            
+            var x = xmlDoc.getElementsByTagName("product");
+            
+            
+
+             //   for (i = 0; i < x.length;i++) 
+               // {
+                    
+              //   id_arr[i]= x[i].getAttribute("id");
+                 
+               // }
+                    
+                  
+                    check(x);
+                }
+
+            
+                     function check(x)
+                {
+                    var i = 0;
+                    var data = document.getElementById("mySearch").value;
+                    
+                 for(i=0;i<x.length;i++)
+                 {
+                     if(data === x[i].getAttribute("id"))
+                     {
+                        
+                         document.getElementById("prd").innerHTML = x[i].getElementsByTagName("category")[0].childNodes[0].nodeValue;
+                         
+                        //document.getElementById("product").innerHTML = x[i].getElementsByTagName("name")[0].childNodes[0].nodeValue;
+                       // document.getElementById("description").innerHTML = x[i].getElementsByTagName("description")[0].childNodes[0].nodeValue;                   
+                       // document.getElementById("quanity").innerHTML = x[i].getElementsByTagName("quanity")[0].childNodes[0].nodeValue;
+                        //document.getElementById("unitprice").innerHTML = x[i].getElementsByTagName("unitprice")[0].childNodes[0].nodeValue +" $";
+                       
+                        
+                        
+                        document.getElementById("table1").style.visibility = "visible";
+                        
+                        
+                        
+                        break;
+                        
+                        }
+     
+                    }
+                    
+                    
+                }
+				const xmlhttp = new XMLHttpRequest();
+xmlhttp.onload = function() {
+  const myObj = JSON.parse(this.responseText);
+  document.getElementById("demo").innerHTML = myObj.name;
+}
+xmlhttp.open("GET", "json_demo.txt");
+xmlhttp.send();
+</script>
+</head>
+<body>
+
+<p id="prd"></p>
+
+
+
+
+</body>
+</html>
